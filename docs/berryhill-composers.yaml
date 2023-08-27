@@ -27,6 +27,29 @@ paths:
           description: Server Exception
         '501':
           description: MongoDB Exception
+    post:
+      tags:
+        - Composers
+      summary: Create a new composer
+      operationId: createComposer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                firstName:
+                  type: string
+                lastName:
+                  type: string
+      responses:
+        '200':
+          description: Successful response
+        '500':
+          description: Server Exception
+        '501':
+          description: MongoDB Exception
 
   #Describe the findComposerById GET operations and responses
   /composers/{id}:
@@ -50,28 +73,4 @@ paths:
         '501':
           description: MongoDB Exception
 
-  #Describe the createComposers POST operations and responses
-  /composers:
-    post:
-      tags:
-        - Composers
-      summary: Create a new composer
-      operationId: createComposer
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                firstName:
-                  type: string
-                lastName:
-                  type: string
-      responses:
-        '200':
-          description: Successful response
-        '500':
-          description: Server Exception
-        '501':
-          description: MongDB Exception
+
