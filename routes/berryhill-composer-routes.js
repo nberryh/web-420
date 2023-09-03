@@ -24,12 +24,9 @@ router.get('/composers', async (req, res) => {
 
 // Route to find a composer by ID
 router.get('/composers/:id', async (req, res) => {
-    const { id } = req.params;
+    const id = req.params.id;
     try {
-        const composer = await Composer.findOne({ _id: id});
-        if (!composer) {
-            return res.status(404).json({ message: 'Composer not found'});
-        }
+        const composer = await Composer.findById(id);
         res.status(200).json(composer);
     }   catch (error) {
         res.status(500).json({ message: 'Server Exception' });
@@ -38,15 +35,14 @@ router.get('/composers/:id', async (req, res) => {
 
 // Route to create a new composer
 router.post('/composers', async (req, res) => {
-    const { firstName, lastName } = req.body;
-    console.log('Request Body:', req.body);
-    console.log('Creating Composer:', { firstName, lastName });
+    const composer = new Composer ({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+    });
     try {
-        const composer = new Composer({ firstName, lastName });
-        const savedComposer = await composer.save();
-        res.status(201).json(savedComposer);
+        await composer.save();
+        res.status(201).json(composer);
     }   catch (error) {
-        console.error('Error saving composer:', error);
         res.status(500).json({ message: 'Server Exception' });
     }
 });

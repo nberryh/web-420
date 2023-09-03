@@ -28,7 +28,7 @@ app.use(express.urlencoded({ extended: true }));
 const conn = 'mongodb+srv://web420_user:S3cret@cluster0.wmphxtw.mongodb.net/web420DB';
 
 mongoose
-    .connect(conn, { useNewUrlParser: true, useUnifiedTopology: true });
+    .connect(conn, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log("Connected to MongoDB");
     })

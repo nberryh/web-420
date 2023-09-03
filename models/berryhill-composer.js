@@ -9,10 +9,10 @@
 
 // Declare variables 
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const schema = mongoose.Schema;
 
 // Declare a new composer schema
-const composerSchema = new Schema({
+const composerSchema = new schema({
     firstName: String,
     lastName: String
 });
