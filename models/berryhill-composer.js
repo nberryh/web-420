@@ -1,10 +1,10 @@
-/*
-===========================================
+/**
+====================================================
 ; Title:  berryhill-composer.js
 ; Author: Nolan Berryhill
-; Date:   09/02/23
+; Date:   09/03/23
 ; Description: Routing for composer API operations
-;==========================================
+;===================================================
 */
 
 // Declare variables 
@@ -17,8 +17,5 @@ const composerSchema = new Schema({
     lastName: String
 });
 
-// Declare variables
-const Composer = mongoose.model('Composer', composerSchema);
-
 // Export the composer model
-module.exports = Composer;
+module.exports = mongoose.model('Composer', composerSchema);

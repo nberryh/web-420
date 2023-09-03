@@ -1,10 +1,10 @@
-/*
-===========================================
+/**
+====================================================
 ; Title:  berryhill-composer-routes.js
 ; Author: Nolan Berryhill
-; Date:   09/02/23
+; Date:   09/03/23
 ; Description: Routing for composer API operations
-;==========================================
+;===================================================
 */
 
 // Declare Variables
@@ -13,7 +13,7 @@ const router = express.Router();
 const Composer = require('../models/berryhill-composer');
 
 // Route to find all composers
-router.get('api/composers', async (req, res) => {
+router.get('/composers', async (req, res) => {
     try {
         const composers = await Composer.find();
         res.json(composers);
@@ -23,7 +23,7 @@ router.get('api/composers', async (req, res) => {
 });
 
 // Route to find a composer by ID
-router.get('/api/composers/:id', async (req, res) => {
+router.get('/composers/:id', async (req, res) => {
     const { id } = req.params;
     try {
         const composer = await Composer.findOne({ _id: id});
@@ -37,7 +37,7 @@ router.get('/api/composers/:id', async (req, res) => {
 });
 
 // Route to create a new composer
-router.post('/api/composers', async (req, res) => {
+router.post('/composers', async (req, res) => {
     const { firstName, lastName } = req.body;
     try {
         const composer = new Composer({ firstName, lastName });
