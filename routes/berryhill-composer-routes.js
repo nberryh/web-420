@@ -13,7 +13,7 @@ const router = express.Router();
 const Composer = require('../models/berryhill-composer');
 
 // Route to find all composers
-router.get('/composers', async (req, res) => {
+router.get('/api/composers', async (req, res) => {
     try {
         const composers = await Composer.find();
         res.status(200).json(composers);
@@ -23,7 +23,7 @@ router.get('/composers', async (req, res) => {
 });
 
 // Route to find a composer by ID
-router.get('/composers/:id', async (req, res) => {
+router.get('/api/composers/:id', async (req, res) => {
     const id = req.params.id;
     try {
         const composer = await Composer.findById(id);
@@ -34,7 +34,7 @@ router.get('/composers/:id', async (req, res) => {
 });
 
 // Route to create a new composer
-router.post('/composers', async (req, res) => {
+router.post('/api/composers', async (req, res) => {
     const composer = new Composer ({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
