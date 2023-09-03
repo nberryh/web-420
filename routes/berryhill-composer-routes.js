@@ -39,11 +39,14 @@ router.get('/composers/:id', async (req, res) => {
 // Route to create a new composer
 router.post('/composers', async (req, res) => {
     const { firstName, lastName } = req.body;
+    console.log('Request Body:', req.body);
+    console.log('Creating Composer:', { firstName, lastName });
     try {
         const composer = new Composer({ firstName, lastName });
-        await composer.save();
-        res.status(201).json(composer);
+        const savedComposer = await composer.save();
+        res.status(201).json(savedComposer);
     }   catch (error) {
+        console.error('Error saving composer:', error);
         res.status(500).json({ message: 'Server Exception' });
     }
 });
