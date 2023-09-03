@@ -16,7 +16,7 @@ const Composer = require('../models/berryhill-composer');
 router.get('/composers', async (req, res) => {
     try {
         const composers = await Composer.find();
-        res.json(composers);
+        res.status(200).json(composers);
     } catch (error) {
         res.status(500).json({ message: 'Server Exception' });
     }
@@ -30,7 +30,7 @@ router.get('/composers/:id', async (req, res) => {
         if (!composer) {
             return res.status(404).json({ message: 'Composer not found'});
         }
-        res.json(composer);
+        res.status(200).json(composer);
     }   catch (error) {
         res.status(500).json({ message: 'Server Exception' });
     }
