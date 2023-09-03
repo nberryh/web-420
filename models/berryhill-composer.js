@@ -14,7 +14,7 @@ const Schema = mongoose.Schema;
 // Declare a new composer schema
 const composerSchema = new Schema({
     firstName: String,
-    lastName: String
+    lastName: String,
 });
 
 // Export the composer model
