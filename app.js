@@ -15,6 +15,7 @@ const swaggerJsdoc = require('swagger-jsdoc');
 const mongoose = require('mongoose');
 const composerAPI = require('./routes/berryhill-composer-routes');
 const Composer = require('./models/berryhill-composer');
+const personRoutes = require('./routes/berryhill-person-routes');
 
 // App configuration and port 
 const app = express();
@@ -54,6 +55,7 @@ const openapiSpecification = swaggerJsdoc(options);
 // Setup swagger
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openapiSpecification));
 app.use('/api', composerAPI);
+app.use('/apr/persons', personRoutes);
 
 // Server location
 http.createServer(app).listen(port, () => {
