@@ -15,6 +15,7 @@ const swaggerJsdoc = require('swagger-jsdoc');
 const mongoose = require('mongoose');
 const composerAPI = require('./routes/berryhill-composer-routes');
 const Composer = require('./models/berryhill-composer');
+const Person = require('./models/berryhill-person');
 const personRoutes = require('./routes/berryhill-person-routes');
 
 // App configuration and port 
@@ -46,7 +47,10 @@ const options = {
             version: '1.0.0',
         },
     },
-    apis: ['./docs/berryhill-composers.yaml'],
+    apis: [
+        './docs/berryhill-composers.yaml',
+        './docs/berryhill-persons.yaml',
+    ],
 };
 
 // Making swaggerJsdoc
