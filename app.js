@@ -59,7 +59,7 @@ const openapiSpecification = swaggerJsdoc(options);
 // Setup swagger
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openapiSpecification));
 app.use('/api', composerAPI);
-app.use('/apr/persons', personRoutes);
+app.use('/api/persons', personRoutes);
 
 // Server location
 http.createServer(app).listen(port, () => {
