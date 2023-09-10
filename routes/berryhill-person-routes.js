@@ -13,7 +13,7 @@ const router = express.Router();
 const Person = require('../models/berryhill-person');
 
 // Route to retrieve all persons
-router.get('/api/persons', async (req, res) => {
+router.get('/persons', async (req, res) => {
     try {
         const persons = await Person.find();
         res.status(200).json(persons);
@@ -23,7 +23,7 @@ router.get('/api/persons', async (req, res) => {
 });
 
 // Route to create a new person
-router.post('/api/persons', async (req, res) => {
+router.post('/persons', async (req, res) => {
     try {
         const { firstName, lastName, roles, dependents, birthDate } = req.body;
         const newPerson = new Person({
@@ -36,6 +36,7 @@ router.post('/api/persons', async (req, res) => {
         const createdPerson = await newPerson.save();
         res.status(201).json(createdPerson);
     } catch (error) {
+        console.log(error);
         res.status(500).json({ message: 'Server Exception' });
     }
 });

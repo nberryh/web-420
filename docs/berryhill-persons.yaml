@@ -43,20 +43,14 @@ paths:
                   type: string
                 lastName:
                   type: string
-                roles:
-                  type: object
-                  properties:
-                    text:
-                      type: string
               dependents:
                 type: array
                 items:
-                  type: object
-                  properties:
-                    firstName: 
-                      type: string
-                    lastName:
-                      type: string
+                  type: string
+              roles:
+                type: array
+                items:
+                  type: string
               birthDate:
                 type: string
       responses:
