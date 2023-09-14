@@ -3,7 +3,7 @@
 ; Title:  berryhill-person-routes.js
 ; Author: Nolan Berryhill
 ; Date:   09/10/23
-; Description: Routing for composer API operations
+; Description: Routing for person API operations
 ;===================================================
 */
 
