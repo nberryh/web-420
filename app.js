@@ -52,7 +52,7 @@ const options = {
     apis: [
         './docs/berryhill-composers.yaml',
         './docs/berryhill-persons.yaml',
-        './docs/berryhill-sessions',
+        './docs/berryhill-sessions.yaml',
     ],
 };
 
