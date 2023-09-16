@@ -49,7 +49,7 @@ router.post('/login', async (req, res) => {
             return res.status(401).json({ message: 'Invalid username and/or password' });
         }
 
-        const passwordIsValid = bcrypt.hash(password, user.password);
+        const passwordIsValid = bcrypt.compare(password, user.password);
 
         if (passwordIsValid) {
             res.status(200).json({ message: 'User logged in' });
