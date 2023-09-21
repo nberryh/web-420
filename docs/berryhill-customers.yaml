@@ -1,0 +1,99 @@
+#----------------------------------------------------------------
+# Title: berryhill-customers.yaml
+# Author: Nolan Berryhill
+# Date: 09/24/23
+# Description: YAML file for describing customers API operations
+#----------------------------------------------------------------
+
+#Set Open API version of 3.0.0
+openapi: 3.0.0
+#Title and version of API
+info:
+  title: Node Shopper API
+  version: 1.0.0
+
+paths:
+#Describe the findAllPersons GET operations and responses
+  /api/customers:
+    post:
+      summary: Create a new customer
+      operationId: createCustomer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                firstName:
+                  type: string
+                lastName:
+                  type: string
+                userName:
+                  type: string
+      responses:
+        '200':
+          description: Customer added to MongoDB
+        '500':
+          description: Server Exception
+        '501':
+          description: MongoDB Exception
+  
+  /api/customers/{username}/invoices:
+    post:
+      summary: Create an invoice for a customer
+      operationId: createInvoiceByUserName
+      parameters:
+        - name: username
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                subtotal:
+                  type: number
+                tax: 
+                  type: number
+                dateCreated:
+                  type: string
+                lineItems:
+                  type: array
+                  items:
+                    properties:
+                      name:
+                        type: string
+                      price:
+                        type: number
+                      quantity:
+                        type: number
+      responses:
+        '200':
+          description: Invoice created and added to MongoDB
+        '500':
+          description: Server Exception
+        '501':
+          description: MongoDB Exception
+
+  /api/customers/{username}/invoices:
+    get:
+      summary: Get all invoices for a customer
+      operationId: findAllInvoiceByUserName
+      parameters:
+        - name: username
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Invoice retrieved from MongoDB
+        '500':
+          description: Server Exception
+        '501':
+          description: MongoDB Exception

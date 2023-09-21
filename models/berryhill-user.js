@@ -7,16 +7,19 @@
 ;===================================================
 */
 
+// Declare variables 
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const bcrypt = require('bcryptjs');
 
+// Define the userSchema schema
 const userSchema = new Schema({
     userName: String,
     password: String,
     emailAddress: String,
 });
 
+// Define the function for password
 userSchema.pre('save', function (next) {
     const user = this;
     if (!user.isModified('password')) return next();
@@ -33,6 +36,7 @@ userSchema.pre('save', function (next) {
     });
 });
 
+// Create the "Customer" model
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;

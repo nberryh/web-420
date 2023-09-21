@@ -19,6 +19,8 @@ const personAPI = require('./routes/berryhill-person-routes');
 const Person = require('./models/berryhill-person');
 const sessionRoutes = require('./routes/berryhill-session-routes');
 const User = require('./models/berryhill-user');
+const customerAPI = require('./routes/berryhill-node-shopper-routes');
+const Customer = require('./models/berryhill-customer');
 
 // App configuration and port 
 const app = express();
@@ -53,6 +55,7 @@ const options = {
         './docs/berryhill-composers.yaml',
         './docs/berryhill-persons.yaml',
         './docs/berryhill-sessions.yaml',
+        './docs/berryhill-customers.yaml',
     ],
 };
 
@@ -64,6 +67,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openapiSpecification));
 app.use('/api', composerAPI);
 app.use('/api', personAPI);
 app.use('/api', sessionRoutes);
+app.use('/api', customerAPI);
 
 // Server location
 http.createServer(app).listen(port, () => {
