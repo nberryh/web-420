@@ -9,13 +9,13 @@
 
 // Declare variables 
 const mongoose = require('mongoose');
-const schema = mongoose.Schema;
+const Schema = mongoose.Schema;
 
 // Define the lineItem schema
 const lineItemSchema = new Schema({
     name: String,
     price: Number,
-    quantity: Number,
+    quantity: Number
 });
 
 // Define the invoice schema
@@ -24,15 +24,15 @@ const invoiceSchema = new Schema({
     tax: Number,
     dateCreated: String,
     dateShipped: String, 
-    lineItems: [lineItemSchema],
+    lineItems: [lineItemSchema]
 });
 
 // Define the customer schema
 const customerSchema = new Schema({
     firstName: String,
-    lastName: Number,
+    lastName: String,
     userName: String, 
-    invoices: [invoiceSchema],
+    invoices: [invoiceSchema]
 });
 
 // Create the "Customer" model
