@@ -65,7 +65,7 @@ router.post('/customers/:username/invoices', async (req, res) => {
 // Route to find all invoices for a customer by username
 router.get('/customers/:username/invoices', async (req, res) => {
     try {
-        const { username } = req.parms;
+        const { username } = req.params;
 
         const customer = await Customer.findOne({ userName: username });
 
