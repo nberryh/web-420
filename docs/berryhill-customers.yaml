@@ -16,6 +16,8 @@ paths:
 #Describe the findAllPersons GET operations and responses
   /api/customers:
     post:
+      tags:
+        - Customers
       summary: Create a new customer
       operationId: createCustomer
       requestBody:
@@ -41,6 +43,8 @@ paths:
   
   /api/customers/{username}/invoices:
     post:
+      tags:
+        - Invoices
       summary: Create an invoice for a customer
       operationId: createInvoiceByUserName
       parameters:
@@ -72,7 +76,16 @@ paths:
                         type: number
                       quantity:
                         type: number
+      responses:
+        '200':
+          description: Invoice created and added to MongoDB
+        '500':
+          description: Server Exception
+        '501':
+          description: MongoDB Exception
     get:
+      tags:
+        - Invoices
       summary: Get all invoices for a customer
       operationId: findAllInvoiceByUserName
       parameters:
@@ -83,7 +96,7 @@ paths:
             type: string
       responses:
         '200':
-          description: Invoice created and added to MongoDB
+          description: Invoice retrieved from MongoDB
         '500':
           description: Server Exception
         '501':
