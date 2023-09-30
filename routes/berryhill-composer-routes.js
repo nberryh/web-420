@@ -62,7 +62,7 @@ router.put('/composers/:id', async (req, res) => {
             return res.status(401).json({ message: 'Invalid composerId' });
         }
 
-        composer.set({ firstName, lastname });
+        composer.set({ firstName, lastName });
         const savedComposer = await composer.save();
 
         res.status(200).json(savedComposer);
@@ -82,7 +82,7 @@ router.delete('/composers/:id', async (req, res) => {
             return res.status(404).json({ message: 'Composer not found' });
         }
 
-        res.statusCode(200).json(deletedComposer);
+        res.status(200).json(deletedComposer);
     } catch (error) {
         res.status(500).json({ message: 'Server Exception' });
     }
