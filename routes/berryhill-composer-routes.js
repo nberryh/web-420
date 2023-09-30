@@ -2,7 +2,7 @@
 ====================================================
 ; Title:  berryhill-composer-routes.js
 ; Author: Nolan Berryhill
-; Date:   09/03/23
+; Date:   10/01/23
 ; Description: Routing for composer API operations
 ;===================================================
 */
@@ -46,6 +46,44 @@ router.post('/composers', async (req, res) => {
         await composer.save();
         res.status(201).json(composer);
     }   catch (error) {
+        res.status(500).json({ message: 'Server Exception' });
+    }
+});
+
+// Route to update a composer by ID
+router.put('/composers/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { firstName, lastName } = req.body;
+
+        const composer = await Composer.findOne({ _id: id });
+
+        if (!composer) {
+            return res.status(401).json({ message: 'Invalid composerId' });
+        }
+
+        composer.set({ firstName, lastname });
+        const savedComposer = await composer.save();
+
+        res.status(200).json(savedComposer);
+    } catch (error) {
+        res.status(500).json({ message: 'Server Exception' });
+    }
+});
+
+// Route to delete a composer by ID
+router.delete('/composers/:id', async (req, res) => {
+    try{
+        const { id } = req.params;
+
+        const deletedComposer = await Composer.findByIdAndDelete(id);
+
+        if (!deletedComposer) {
+            return res.status(404).json({ message: 'Composer not found' });
+        }
+
+        res.statusCode(200).json(deletedComposer);
+    } catch (error) {
         res.status(500).json({ message: 'Server Exception' });
     }
 });

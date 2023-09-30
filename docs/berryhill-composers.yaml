@@ -72,5 +72,55 @@ paths:
           description: Server Exception
         '501':
           description: MongoDB Exception
+    put:
+      tags:
+        - Composers
+      summary: Update a composer by ID
+      operationId: updateComposerById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+            type: object
+            properties:
+              firstName:
+                type: string
+              lastName:
+                type: string
+      responses:
+        '200':
+          description: Composer updated successfully
+        '401':
+          description: Invalid composerId
+        '500':
+          description: Server Exception
+        '501':
+          description: MongoDB Exception
+    delete:
+      tags:
+        - Composers
+      summary: Delete a composer by ID
+      operationId: deleteComposerById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Composer deleted successfully
+        '500':
+          description: Server Exception
+        '501':
+          description: MongoDB Exception
+
 
 
