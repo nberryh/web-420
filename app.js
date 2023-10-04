@@ -21,6 +21,8 @@ const sessionRoutes = require('./routes/berryhill-session-routes');
 const User = require('./models/berryhill-user');
 const customerAPI = require('./routes/berryhill-node-shopper-routes');
 const Customer = require('./models/berryhill-customer');
+const teamAPI = require('./routes/berryhill-team-routes');
+const Team = require('./models/berryhill-team');
 
 // App configuration and port 
 const app = express();
@@ -56,6 +58,7 @@ const options = {
         './docs/berryhill-persons.yaml',
         './docs/berryhill-sessions.yaml',
         './docs/berryhill-customers.yaml',
+        './docs/berryhill-team.yaml',
     ],
 };
 
@@ -68,6 +71,7 @@ app.use('/api', composerAPI);
 app.use('/api', personAPI);
 app.use('/api', sessionRoutes);
 app.use('/api', customerAPI);
+app.use('/api', teamAPI);
 
 // Server location
 http.createServer(app).listen(port, () => {

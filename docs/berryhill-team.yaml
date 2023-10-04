@@ -1,0 +1,102 @@
+#----------------------------------------------------------------
+# Title: berryhill-team.yaml
+# Author: Nolan Berryhill
+# Date: 10/08/23
+# Description: YAML file for describing teams API operations
+#----------------------------------------------------------------
+
+#Set Open API version of 3.0.0
+openapi: 3.0.0
+#Title and version of API
+info:
+  title: Node Shopper API
+  version: 1.0.0
+
+paths:
+  /api/teams:
+    get:
+      summary: Get all teams.
+      operationId: findAllTeams
+      responses:
+        200:
+          description: An array of team documents.
+        500:
+          description: Server Exception.
+        501:
+          description: MongoDB Exception.
+
+  /api/teams/{id}/players:
+    post:
+      summary: Assign a player to a team by ID.
+      operationId: assignPlayersToTeam
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: Team ID.
+      requestBody:
+        description: Player's information.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                firstName:
+                  type: string
+                lastName:
+                  type: string
+                salary:
+                  type: number
+      responses:
+        200:
+          description: Player document.
+        401:
+          description: Invalid teamId.
+        500:
+          description: Server Exception.
+        501:
+          description: MongoDB Exception.
+
+    get:
+      summary: Get all players for a team by ID.
+      operationId: findAllPlayersByTeamId
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: Team ID.
+      responses:
+        200:
+          description: An array of player documents.
+        401:
+          description: Invalid teamId.
+        500:
+          description: Server Exception.
+        501:
+          description: MongoDB Exception.
+
+  /api/teams/{id}:
+    delete:
+      summary: Delete a team by ID.
+      operationId: deleteTeamById
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: Team ID.
+      responses:
+        200:
+          description: Team Document.
+        401:
+          description: Invalid teamId
+        500:
+          description: Server Exception.
+        501:
+          description: MongoDB Exception.
