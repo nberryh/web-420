@@ -16,6 +16,8 @@ paths:
 #Describe the userSignup POST operations and responses
   /api/signup:
     post:
+      tags:
+        - Session
       summary: User signup
       operationId: userSignup
       requestBody:
@@ -43,6 +45,8 @@ paths:
 #Describe the userLogin POST operations and responses
   /api/login:
     post:
+      tags:
+        - Session
       summary: User login
       operationId: userLogin
       requestBody:
