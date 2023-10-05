@@ -72,7 +72,7 @@ router.delete('/teams/:id', async (req, res) => {
             return res.status(401).json({ message: 'Invalid teamId' });
         }
 
-        res.status(200).json(deletedTeam);
+        res.status(200).json(deleteTeam);
     } catch (error) {
         res.status(500).json({ message: 'Server Exception' });
     }
