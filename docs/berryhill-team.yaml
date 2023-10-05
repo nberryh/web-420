@@ -9,7 +9,7 @@
 openapi: 3.0.0
 #Title and version of API
 info:
-  title: Node Shopper API
+  title: Team API
   version: 1.0.0
 
 paths:
