@@ -13,7 +13,7 @@ const router = express.Router();
 const Team = require('../models/berryhill-team');
 
 // Route to find all teams
-router.get('/team', async (req, res) => {
+router.get('/teams', async (req, res) => {
     try{
         const teams = await Team.find();
         res.status(200).json(teams);
@@ -45,7 +45,7 @@ router.post('/teams/:id/players', async (req, res) => {
 });
 
 // Route to find all Players on Team
-router.get('/team/:id/players', async (req, res) => {
+router.get('/teams/:id/players', async (req, res) => {
     const { id } = req.params;
 
     try {
