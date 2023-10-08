@@ -8,6 +8,14 @@
         "dev": "nodemon app.js",
         "render-deploy": "ng build --configuration=production"
     },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/nberryh/web-420.git"
+    },
+    "bugs":{
+        "url": "https://github.com/nberryh/pet-r-us/issues"
+    },
+    "homepage": "https://github.com/nberryh/web-420#readme",
     "dependencies": {
         "bcryptjs": "^2.4.3",
         "bluebird": "^3.7.2",
